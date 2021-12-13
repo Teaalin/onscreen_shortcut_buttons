@@ -8,7 +8,7 @@ I switched to linux about a month ago in celebration of Windows 11. I was hesita
 I was missing my windows onscreen toolbar, then I remembered, oh duh, I'm learning to program. I can MAKE one. cue python.
 
 ## Requirements:
-- python 3
+- python 3 (google "install python on Windows/Linux/Mac")
 - maybe tk (google "install tkinter on Windows/Linux/Mac")
 
 ## How to use:
