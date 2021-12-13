@@ -15,7 +15,7 @@ I was missing my windows onscreen toolbar, then I remembered, oh duh, I'm learni
 
 run `python3 Toolbar.py` in terminal, powershell, cmd, whatever you have
 
-If you are on mac OS you WILL need to change the code (change alt_tab = "'alt','tab'" to "'command','shift','tab'")
+If you are on mac OS you WILL need to change the code (change `alt_tab = "'alt','tab'"` to `"'command','shift','tab'"`)
 
 It can run with or without the config file, but you need the config to customise it.
 Separate each row onto a line in the text file and follow the following conventions:
