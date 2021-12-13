@@ -12,6 +12,9 @@ I was missing my windows onscreen toolbar, then I remembered, oh duh, I'm learni
 - maybe tk (google "install tkinter on Windows/Linux/Mac")
 
 ## How to use:
+
+run `python3 Toolbar.py`
+
 It can run with or without the config file, but you need the config to customise it.
 it doesn't work well with only one column so try to have atleast 2 like the example config (see known issues below)
 Separate each row onto a line in the text file and follow the following conventions:
