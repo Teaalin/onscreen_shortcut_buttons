@@ -33,8 +33,8 @@ See https://pyautogui.readthedocs.io/en/latest/keyboard.html#keyboard-keys for a
 ```BUTTON_TEXT "keyboard_button"<4spaces>BUTTON_TEXT "keyboard_button"<4spaces>BUTTON_TEXT "keyboard_button"```
 (replace <4spaces> with 4 spaces)
 
-Do NOT add or remove the spaces in the config. Do NOT use tab instead of 4 spaces between the buttons.
-The code relies on finding the spaces to seppartate the buttons (to be changed) and will error if changed
+Do NOT add or remove spaces in the config. Do NOT use tab instead of 4 spaces between the buttons.
+The code relies on finding the spaces to separate the buttons (to be changed) and will error if changed
 
 ### known issues:
  - terrible, if not impossible to move the window with only one column
