@@ -9,6 +9,7 @@ from functools import partial
 favourite_colour = '#00486e'
 # =============================
 
+PADDING = 5
 buttons = []
 
 default_config = 'UNDO "ctrlleft","z"    REDO "ctrlleft","shift","z"\n'\
