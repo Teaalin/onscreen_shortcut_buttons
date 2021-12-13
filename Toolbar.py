@@ -74,8 +74,6 @@ def count_columns(lines):
     return max_col
 
 def press_hotkey(keys):
-    print("hotkey("+ keys +")")
-    # Do the jank
     hotkey("alt", "tab")
     exec( str("hotkey("+ keys +")") )
 
