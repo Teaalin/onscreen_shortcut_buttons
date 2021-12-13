@@ -42,6 +42,7 @@ The code relies on finding the spaces to seppartate the buttons (to be changed) 
  - terrible code :P
  - terrible config?
  - I am a github noob (first public project)
+ - Sometimes the buttons don't work or do something weird (because of alt-tab behaviour)
 
 ##### Small caveat:
 it relies on alt-tab to switch to the window that you want to use the shortcut on. I can't predict the behaviour it will have if you have alt-tab assigned to something else. I plan to hunt alternative methods, but I'm avoiding OS specific code so that this program should be compatible with Windows, Mac OS and Linux
