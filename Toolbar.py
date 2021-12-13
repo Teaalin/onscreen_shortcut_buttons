@@ -5,8 +5,13 @@ from tkinter import ttk
 from pyautogui import hotkey
 from functools import partial
 
-# User related vars
-favourite_colour = '#00486e'
+# ===== User related vars =====
+alt_tab = "'alt','tab'"
+
+active_colour = "#00486e"
+background_colour = "#282e33"
+button_colour = "#33393f"
+text_colour = "white"
 # =============================
 
 PADDING = 5
@@ -22,12 +27,12 @@ root = tkinter.Tk()
 root.title("Toolbar")
 
 root.resizable(0,0)
-root.configure(bg="#282e33")
+root.configure(bg=background_colour)
 root.attributes("-topmost", True)
 
 style = ttk.Style()
-style.configure("TButton", background="#33393f", foreground="white", borderwidth=0)
-style.map('TButton', background=[('active', favourite_colour)])
+style.configure("TButton", background=button_colour, foreground=text_colour, borderwidth=0)
+style.map('TButton', background=[('active', active_colour)])
 
 # Functions
 def main():
@@ -74,7 +79,7 @@ def count_columns(lines):
     return max_col
 
 def press_hotkey(keys):
-    hotkey("alt", "tab")
+    exec( str("hotkey("+ alt_tab +")") )
     exec( str("hotkey("+ keys +")") )
 
 main()
