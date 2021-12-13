@@ -13,7 +13,7 @@ I was missing my windows onscreen toolbar, then I remembered, oh duh, I'm learni
 
 ## How to use:
 
-run `python3 Toolbar.py`
+run `python3 Toolbar.py` in terminal, powershell, cmd, whatever you have
 
 It can run with or without the config file, but you need the config to customise it.
 it doesn't work well with only one column so try to have atleast 2 like the example config (see known issues below)
