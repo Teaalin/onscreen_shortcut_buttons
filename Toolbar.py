@@ -5,16 +5,17 @@ from tkinter import ttk
 from pyautogui import hotkey
 from functools import partial
 
-# ===== User related vars =====
+# ===== User Variables =====
+# Customise these! These will (optionally) load from a config when I set that up
 alt_tab = "'alt','tab'"
 
 active_colour = "#00486e"
 background_colour = "#282e33"
 button_colour = "#33393f"
 text_colour = "white"
-# =============================
+# ==========================
 
-PADDING = 5
+PADDING = 5 # padding doesn't work and I don't know why :D
 buttons = []
 
 default_config = 'UNDO "ctrlleft","z"    REDO "ctrlleft","shift","z"\n'\
