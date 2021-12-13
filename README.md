@@ -8,6 +8,10 @@ I switched to linux about a month ago in celebration of Windows 11. I was hesita
 I missed my windows only onscreen toolbar today, then I remembered, oh duh, I'm learning to program. I can MAKE one.
 cue python.
 
+## Requirements:
+- python 3
+- maybe tk (google "install tkinter on Windows/Linux/Mac")
+
 ## How to use:
 It can run with or without the config file, but you need the config to customise the setup.
 it doesn't work well with only one column so try to have atleast 2 like the example config (see known issues below)
@@ -36,3 +40,6 @@ The code relies on finding the spaces to seppartate the buttons (to be changed)
  - terrible code :P
  - terrible config
  - I am a github noob (first public project)
+
+##### Small caveat:
+it relies on alt-tab to switch back to the window that you want to use the shortcut on. I can't predict the behaviour it will have if you have alt-tab assigned to something else. I plan to see if there's alternative methods, but I'm avoiding OS specific code so that this program should be compatible with Windows, Mac and the many unix based systems so long as you have
