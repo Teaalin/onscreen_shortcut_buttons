@@ -29,7 +29,7 @@ Separate each row onto a line in the text file and follow the following conventi
 See https://pyautogui.readthedocs.io/en/latest/keyboard.html#keyboard-keys for all possible keys
 
 #### Configuration example of 3 columns:
-`BUTTON_TEXT "keyboard_button"    BUTTON_TEXT "keyboard_button"    BUTTON_TEXT "keyboard_button"`
+```BUTTON_TEXT "keyboard_button"    BUTTON_TEXT "keyboard_button"    BUTTON_TEXT "keyboard_button"```
 
 Do NOT add or remove the spaces in the config. Do NOT use tab instead of 4 spaces between the buttons.
 The code relies on finding the spaces to seppartate the buttons (to be changed) and will error if changed
