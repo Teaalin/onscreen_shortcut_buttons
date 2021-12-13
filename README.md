@@ -15,6 +15,8 @@ I was missing my windows onscreen toolbar, then I remembered, oh duh, I'm learni
 
 run `python3 Toolbar.py` in terminal, powershell, cmd, whatever you have
 
+If you are on mac OS you WILL need to change the code (change alt_tab = "'alt','tab'" to "'command','shift','tab'")
+
 It can run with or without the config file, but you need the config to customise it.
 Separate each row onto a line in the text file and follow the following conventions:
 
@@ -45,4 +47,4 @@ The code relies on finding the spaces to seppartate the buttons (to be changed) 
  - Sometimes the buttons don't work or do something weird (because of alt-tab behaviour)
 
 ##### Small caveat:
-it relies on alt-tab to switch to the window that you want to use the shortcut on. I can't predict the behaviour it will have if you have alt-tab assigned to something else. I plan to hunt alternative methods, but I'm avoiding OS specific code so that this program should be compatible with Windows, Mac OS and Linux
+it relies on alt-tab to switch to the window that you want to use the shortcut on. I can't predict the behaviour it will have if you have alt-tab assigned to something else. I plan to hunt alternative methods.
