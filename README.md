@@ -4,8 +4,7 @@ A customisable onscreen shortcut toolbar for creative applications
 ![screen-gif](./example.gif)
 
 ## Why?
-I switched to linux about a month ago in celebration of Windows 11. I was hesitant to switch but only my art setup held me back.
-I was missing my windows onscreen toolbar, then I remembered, oh duh, I'm learning to program. I can MAKE one. cue python.
+I switched to linux but I miss my windows onscreen toolbar, then I remembered, oh duh, I'm learning to program. I can MAKE one. cue python.
 
 ## Requirements:
 - python 3 (google "install python on Windows/Linux/Mac")
