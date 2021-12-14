@@ -43,70 +43,67 @@ root.resizable(0,0)
 root.attributes("-topmost", True)
 
 style = ttk.Style()
-style.configure("TFrame", background="black") #temporary for debugging
-
-# TODO:
-#   make the config better
-#       - merge the configs together
-#       - remove spacing requirements and use regex
-#       - save last screen position
 
 # Functions
 def setup():
-    alt_tab, highlight_colour, background_colour, button_colour, text_colour, PADX, PADY, stick, root, style
+    settings = []
+    buttons = []
 
     # Read the user config if it exists
     try:
-        file = open("user_config.txt", "r")
-        lines = file.readlines()
+        file = open("toolbar_config.txt", "r")
+        lines = file.read()
+        settings = re.findall(r"settings:{\s*(\w.*?)}", lines, re.DOTALL)[0].replace(" ", "")
+        buttons = re.findall(r"buttons:{\s*(\w.*?)}", lines, re.DOTALL)[0]
 
-        if len(lines) < 1:
-            raise EOFError
+        load_settings(settings)
+        
+        file.close()
+    except IOError:
+        print("No config found, using default settings")
+        buttons = default_config.split("\n")
+    except EOFError:
+        print("There are no contents in the file")
+        buttons = default_config.split("\n")
+    except:
+        print("ERR: configuration invalid, using defaults")
 
+    if buttons == []:
+        buttons = default_config.split("\n")
+
+    load_buttons(buttons)
+    
+    # Apply configuration
+    global style
+    global root
+    root.configure(bg=background_colour)
+    style.configure("TButton", background=button_colour, foreground=text_colour, borderwidth=0, padding=(PADX, PADY))
+    #style.configure("TFrame", background="black")
+    style.map('TButton', background=[('active', highlight_colour)])
+    root.mainloop()
+
+def load_settings(lines):
         secure_varibles = ["alt_tab", "highlight_colour", "background_colour", "button_colour", "text_colour", "button_border", "PADX", "PADY", "stick"]
-        settings = re.findall(r"(\w+) *= *([\w#'\",]+)", str(lines))
-
-        for variable, value in settings:
+        settings = re.findall(r"(\w+) *= *([\w#'\",]+)", lines, re.DOTALL)
+        print(settings)
+        for line in settings:
+            #for variable, value in line: # 2 is > 2 apparently 
+            variable = line[0]
+            value = line[1]
             if not variable in secure_varibles:
                 print("WARN config: \"" + variable + "\" is unchangable or is invalid. Skipping")
             else:
                 # yes, I know globals are bad and I should feel bad
                 exec(str("globals()['" + variable + "']=" + value))
-                #exec(str(variable + "=" + value)) #variable + "=" + value)
-            
-        file.close()
-    except IOError:
-        print("No user config found, using default settings")
-    except EOFError:
-        print("There are no contents in the file")
 
-    # Apply configuration
-    root.configure(bg=background_colour)
-    style.configure("TButton", background=button_colour, foreground=text_colour, borderwidth=0, padding=(PADX, PADY))
-    style.configure("TFrame", background="black")
-    style.map('TButton', background=[('active', highlight_colour)])
-
-def main():
-    lines = []
-
-    try:
-        file = open("toolbar_config.txt", "r")
-        lines = file.readlines()
-        file.close()
-    except IOError:
-        print("No toolbar config found, using default buttons")
-        lines = default_config.split("\n")
-    
-    load_config(lines)
-
-def load_config(lines):
+def load_buttons(lines):
     row = 1; col = 1; cols = 1
     global root
 
-    for line in lines:
-        button_config = line.split("    ")
+    for line in lines.split('\n'):
+        button_config = re.findall("\w+ *: *[\w,']+", line)
 
-        new_frame = ttk.Frame(root)#, border=button_border)
+        new_frame = ttk.Frame(root)
         new_frame.grid(row=row, sticky=stick)
         frames.append(new_frame)
 
@@ -117,7 +114,8 @@ def load_config(lines):
             borders.append(border_frame)
 
             # Create the button
-            display_string, button_hotkey = button.split(" ")
+            display_string, button_hotkey = button.replace(" ", "").split(":")
+            
             new_button = ttk.Button(border_frame, text=display_string, command=partial(press_hotkey, button_hotkey))
             new_button.grid(sticky="NSEW")
             buttons.append(new_button)
@@ -125,11 +123,10 @@ def load_config(lines):
 
         row += 1
         col = 1
-    root.mainloop()
 
 def press_hotkey(keys):
     exec( str("hotkey("+ alt_tab +")") )
+    print( str("hotkey("+ keys +")") )
     exec( str("hotkey("+ keys +")") )
 
 setup()
-main()
