@@ -1,86 +1,135 @@
 #!/usr/bin/env python3
 
+import re
 import tkinter
-from tkinter import ttk
-from pyautogui import hotkey
 from functools import partial
+from pyautogui import hotkey
+from tkinter import ttk
 
-# ===== User Variables =====
-# Customise these! These will (optionally) load from a config when I set that up
-alt_tab = "'alt','tab'"
+import random
 
-active_colour = "#00486e"
+# Customise here instead of having config files for a single portable Toolbar.py file
+# ======================================
+alt_tab = "'alt','tab'" # MAC OS: "'command','shift','tab'"
+
+highlight_colour = "#00486e"
 background_colour = "#282e33"
 button_colour = "#33393f"
 text_colour = "white"
-# ==========================
 
-PADDING = 5 # padding doesn't work and I don't know why :D
+default_config = 'undo "ctrlleft","z"    redo "ctrlleft","shift","z"\n'\
+                 'copy "ctrlleft","c"    paste "ctrlleft","v"\n'\
+                 'transform "ctrlleft","t"\n'\
+                 'deselect "ctrlleft","shift","a"'
+
+button_border = 1
+# Padding on the left and right of the button
+PADX = 10
+# Padding on the top and buttom of the button
+PADY = 8
+# Stickies the buttons to left and right sides, change to "" if you don't want stretched buttons
+stick = "EW" # set with variations of "NSEW" or ""
+# ======================================
+# End of user customisation
+
+frames = []
+borders = []
 buttons = []
-
-default_config = 'UNDO "ctrlleft","z"    REDO "ctrlleft","shift","z"\n'\
-                 'COPY "ctrlleft","c"    PASTE "ctrlleft","v"\n'\
-                 'TRANSFORM "ctrlleft","t"\n'\
-                 'DESELECT "ctrlleft","shift","a"'
 
 # Initialize and configure the window
 root = tkinter.Tk()
 root.title("Toolbar")
-
 root.resizable(0,0)
-root.configure(bg=background_colour)
 root.attributes("-topmost", True)
 
 style = ttk.Style()
-style.configure("TButton", background=button_colour, foreground=text_colour, borderwidth=0)
-style.map('TButton', background=[('active', active_colour)])
+style.configure("TFrame", background="black") #temporary for debugging
+
+# TODO:
+#   make the config better
+#       - merge the configs together
+#       - remove spacing requirements and use regex
+#       - save last screen position
 
 # Functions
+def setup():
+    alt_tab, highlight_colour, background_colour, button_colour, text_colour, PADX, PADY, stick, root, style
+
+    # Read the user config if it exists
+    try:
+        file = open("user_config.txt", "r")
+        lines = file.readlines()
+
+        if len(lines) < 1:
+            raise EOFError
+
+        secure_varibles = ["alt_tab", "highlight_colour", "background_colour", "button_colour", "text_colour", "button_border", "PADX", "PADY", "stick"]
+        settings = re.findall(r"(\w+) *= *([\w#'\",]+)", str(lines))
+
+        for variable, value in settings:
+            if not variable in secure_varibles:
+                print("WARN config: \"" + variable + "\" is unchangable or is invalid. Skipping")
+            else:
+                # yes, I know globals are bad and I should feel bad
+                exec(str("globals()['" + variable + "']=" + value))
+                #exec(str(variable + "=" + value)) #variable + "=" + value)
+            
+        file.close()
+    except IOError:
+        print("No user config found, using default settings")
+    except EOFError:
+        print("There are no contents in the file")
+
+    # Apply configuration
+    root.configure(bg=background_colour)
+    style.configure("TButton", background=button_colour, foreground=text_colour, borderwidth=0, padding=(PADX, PADY))
+    style.configure("TFrame", background="black")
+    style.map('TButton', background=[('active', highlight_colour)])
+
 def main():
     lines = []
-    
+
     try:
         file = open("toolbar_config.txt", "r")
         lines = file.readlines()
         file.close()
     except IOError:
-        print("No config found, using default buttons")
+        print("No toolbar config found, using default buttons")
         lines = default_config.split("\n")
     
     load_config(lines)
 
 def load_config(lines):
     row = 1; col = 1; cols = 1
-    max_col = count_columns(lines)
     global root
 
     for line in lines:
         button_config = line.split("    ")
-        cols = len(button_config)
-        
+
+        new_frame = ttk.Frame(root)#, border=button_border)
+        new_frame.grid(row=row, sticky=stick)
+        frames.append(new_frame)
+
         for button in button_config:
+            # Create a frame for the button so that it can have a "border"
+            border_frame = ttk.Frame(new_frame, borderwidth=button_border)
+            border_frame.grid(row=row, column=col, sticky=stick)
+            borders.append(border_frame)
+
+            # Create the button
             display_string, button_hotkey = button.split(" ")
-            new_button = ttk.Button(root, text=display_string, command=partial(press_hotkey, button_hotkey))
-            new_button.grid(row=row, column=col,ipadx=PADDING,ipady=PADDING, columnspan=int(max_col/cols), sticky="EW")
+            new_button = ttk.Button(border_frame, text=display_string, command=partial(press_hotkey, button_hotkey))
+            new_button.grid(sticky="NSEW")
             buttons.append(new_button)
             col += 1
+
         row += 1
         col = 1
     root.mainloop()
-
-def count_columns(lines):
-    col = 0
-    max_col = 1
-    for line in lines:
-        for button in line.split("    "):
-            col += 1
-            if col > max_col:
-                max_col = col
-        col = 0
-    return max_col
 
 def press_hotkey(keys):
     exec( str("hotkey("+ alt_tab +")") )
     exec( str("hotkey("+ keys +")") )
 
+setup()
 main()
