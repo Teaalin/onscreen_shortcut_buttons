@@ -1,4 +1,17 @@
-UNDO "ctrlleft","z"    REDO "ctrlleft","shift","z"
-COPY "ctrlleft","c"    PASTE "ctrlleft","v"
-TRANSFORM "ctrlleft","t"
-DESELECT "ctrlleft","shift","a"
+settings:{
+    alt_tab = '"alt","tab"'
+    highlight_colour = '#00486e'
+    background_colour = '#282e33'
+    button_colour = '#33393f'
+    text_colour = 'white'
+    button_border = 1
+    PADX = 10
+    PADY = 8
+    stick = 'EW'
+}
+buttons:{
+    UNDO : 'ctrlleft','z'      REDO : 'ctrlleft','shift','z'
+    COPY : 'ctrlleft','c'      PASTE : 'ctrlleft','v'
+    TRANSFORM : 'ctrlleft','t'
+    DESELECT : 'ctrlleft','shift','a'
+}
