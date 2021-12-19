@@ -15,7 +15,7 @@ cue python.
 ## Usage:
 run `python3 Toolbar.py` in a [terminal](https://pythonbasics.org/execute-python-scripts/).
 
-If you are on Mac OS change the code or config line `alt_tab = '"alt","tab"'` to `'"command","shift","tab"'`
+If you are on Mac OS change the code or config line `alt_tab = "alt,tab"` to `alt_tab = "command,shift,tab"`
 
 Place and edit the toolbar_config.txt in the same folder as Toolbar.py (Or edit the Toolbar.py) to customise it.
 
@@ -23,7 +23,7 @@ Separate each desired row onto a line in the file and follow the following conve
 
 ### Configuration of buttons/hotkeys:
 #### Example buttons:
-```["BUTTON_TEXT : keyboard_button BUTTON_TEXT : keyboard_button,keyboard_button", "BUTTON_TEXT keyboard_button,keyboard_button,keyboard_button"```
+```["BUTTON_TEXT : keyboard_key BUTTON_TEXT : keyboard_key,keyboard_key", "BUTTON_TEXT keyboard_key,keyboard_key,keyboard_key"```
 
 Do not put spaces between keyboard keys, have atleast one space between 'keyboard_button' and the next BUTTON_TEXT
 
@@ -31,5 +31,5 @@ Do not put spaces between keyboard keys, have atleast one space between 'keyboar
 
 ## Caveats:
  - It relies on alt-tab to switch to the window that you want to use the shortcut on. I can't predict how it will behave if your alt-tab works differently. I plan to hunt alternative methods.
- - Terribly difficult, if not impossible to move the window with only one column unless you configure the padding
+ - Impossible to move the window with only one column unless you configure the padding
  - Sometimes the buttons don't work or do something weird (likely because of alt-tab behaviour)
