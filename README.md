@@ -17,15 +17,16 @@ run `python3 Toolbar.py` in a [terminal](https://pythonbasics.org/execute-python
 
 If you are on Mac OS change the code or config line `alt_tab = "alt,tab"` to `alt_tab = "command,shift,tab"`
 
-Place and edit the toolbar_config.txt in the same folder as Toolbar.py (Or edit the Toolbar.py) to customise it.
-
-Separate each desired row onto a line in the file and follow the following conventions:
-
 ### Configuration of buttons/hotkeys:
-#### Example buttons:
-```["BUTTON_TEXT : keyboard_key BUTTON_TEXT : keyboard_key,keyboard_key", "BUTTON_TEXT keyboard_key,keyboard_key,keyboard_key"```
+Place and edit the toolbar_config.txt in the same folder as Toolbar.py (Or edit the Toolbar.py) to customise it.
+#### Button format in config:
+```"buttons":["BUTTON_TEXT : keyboard_key BUTTON_TEXT : keyboard_key,keyboard_key", "BUTTON_TEXT keyboard_key,keyboard_key,keyboard_key"]```
+
+Encapsulate each button row in double quotes `"`, and sepparate each row with a comma `,`
 
 Do not put spaces between keyboard keys, have atleast one space between 'keyboard_button' and the next BUTTON_TEXT
+
+See my toolbar_config for complete formatting including other custom settings
 
 [See all possible keys](https://pyautogui.readthedocs.io/en/latest/keyboard.html#keyboard-keys)
 
