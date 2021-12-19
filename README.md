@@ -23,8 +23,7 @@ Separate each desired row onto a line in the file and follow the following conve
 
 ### Configuration of buttons/hotkeys:
 #### Example buttons:
-```["BUTTON_TEXT : keyboard_button BUTTON_TEXT : keyboard_button,keyboard_button BUTTON_TEXT keyboard_button,keyboard_button,keyboard_button",
-"BUTTON_TEXT : keyboard_button BUTTON_TEXT : keyboard_button"]```
+```["BUTTON_TEXT : keyboard_button BUTTON_TEXT : keyboard_button,keyboard_button", "BUTTON_TEXT keyboard_button,keyboard_button,keyboard_button"```
 
 Do not put spaces between keyboard keys, have atleast one space between 'keyboard_button' and the next BUTTON_TEXT
 
