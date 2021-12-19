@@ -10,7 +10,7 @@ cue python.
 
 ## Requirements:
 - [python 3](https://www.python.org/downloads/)
-- [maybe tkinter](https://tkdocs.com/tutorial/install.html")
+- [tkinter](https://tkdocs.com/tutorial/install.html")
 
 ## Usage:
 run `python3 Toolbar.py` in a [terminal](https://pythonbasics.org/execute-python-scripts/).
@@ -18,17 +18,19 @@ run `python3 Toolbar.py` in a [terminal](https://pythonbasics.org/execute-python
 If you are on Mac OS change the code or config line `alt_tab = '"alt","tab"'` to `'"command","shift","tab"'`
 
 Place and edit the toolbar_config.txt in the same folder as Toolbar.py (Or edit the Toolbar.py) to customise it.
-Separate each row onto a line in the text file and follow the following conventions:
+
+Separate each desired row onto a line in the file and follow the following conventions:
 
 ### Configuration of buttons/hotkeys:
-#### Example with 3 columns:
-```BUTTON_TEXT : 'keyboard_button' BUTTON_TEXT : 'keyboard_button','keyboard_button' BUTTON_TEXT 'keyboard_button','keyboard_button','keyboard_button'```
+#### Example buttons:
+```["BUTTON_TEXT : keyboard_button BUTTON_TEXT : keyboard_button,keyboard_button BUTTON_TEXT keyboard_button,keyboard_button,keyboard_button",
+"BUTTON_TEXT : keyboard_button BUTTON_TEXT : keyboard_button"]```
 
-Do not put spaces between keyboard keys, have a space between 'keyboard_button' and the next BUTTON_TEXT
+Do not put spaces between keyboard keys, have atleast one space between 'keyboard_button' and the next BUTTON_TEXT
 
 [See all possible keys](https://pyautogui.readthedocs.io/en/latest/keyboard.html#keyboard-keys)
 
 ## Caveats:
  - It relies on alt-tab to switch to the window that you want to use the shortcut on. I can't predict how it will behave if your alt-tab works differently. I plan to hunt alternative methods.
- - Terribly difficult, if not impossible to move the window with only one column
+ - Terribly difficult, if not impossible to move the window with only one column unless you configure the padding
  - Sometimes the buttons don't work or do something weird (likely because of alt-tab behaviour)
