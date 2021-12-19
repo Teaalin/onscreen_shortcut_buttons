@@ -15,10 +15,11 @@ cue python.
 ## Usage:
 run `python3 Toolbar.py` in a [terminal](https://pythonbasics.org/execute-python-scripts/).
 
-If you are on Mac OS change the code or config line `alt_tab = "alt,tab"` to `alt_tab = "command,shift,tab"`
-
 ### Configuration of buttons/hotkeys:
 Place and edit the toolbar_config.txt in the same folder as Toolbar.py (Or edit the Toolbar.py) to customise it.
+
+If you are on Mac OS change the code or config line `alt_tab = "alt,tab"` to `alt_tab = "command,shift,tab"`
+
 #### Button format in config:
 ```"buttons":["BUTTON_TEXT : keyboard_key BUTTON_TEXT : keyboard_key,keyboard_key", "BUTTON_TEXT keyboard_key,keyboard_key,keyboard_key"]```
 
