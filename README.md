@@ -25,7 +25,7 @@ If you are on Mac OS change the code or config line `alt_tab = "alt,tab"` to `al
 
 Encapsulate each button row in double quotes `"`, and sepparate each row with a comma `,`
 
-Do not put spaces between keyboard keys, have atleast one space between 'keyboard_button' and the next BUTTON_TEXT
+Do not put spaces between keyboard keys, have atleast one space between 'keyboard_key' and the next BUTTON_TEXT
 
 See my toolbar_config for complete formatting including other custom settings
 
