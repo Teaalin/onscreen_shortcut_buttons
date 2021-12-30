@@ -35,3 +35,4 @@ See my toolbar_config for complete formatting including other custom settings
  - It relies on alt-tab to switch to the window that you want to use the shortcut on. I can't predict how it will behave if your alt-tab works differently. I plan to hunt alternative methods.
  - Impossible to move the window with only one column unless you configure the padding
  - Sometimes the buttons don't work or do something weird (likely because of alt-tab behaviour)
+ - It's python, it's slow, but for this application it works enough
